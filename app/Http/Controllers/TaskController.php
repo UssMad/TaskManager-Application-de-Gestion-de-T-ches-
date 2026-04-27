@@ -1,7 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Http\Controllers\Controller;
+use App\Models\Task;
+use App\Models\Category;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class TaskController extends Controller
@@ -11,7 +14,12 @@ class TaskController extends Controller
      */
     public function index()
     {
-        //
+        $tasks = auth()->user()->tasks()
+            ->with('category')
+            ->latest()
+            ->paginate(8);
+
+        return view('tasks.index', compact('tasks'));
     }
 
     /**
@@ -41,9 +49,15 @@ class TaskController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Task $task)
     {
-        //
+        // Mandatory ownership check
+        if ($task->user_id !== auth()->id()) {
+            abort(403, 'Unauthorized action.');
+        }
+
+        $categories = Category::all();
+        return view('tasks.edit', compact('task', 'categories'));
     }
 
     /**
