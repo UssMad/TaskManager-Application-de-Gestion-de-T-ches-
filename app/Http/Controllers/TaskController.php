@@ -10,44 +10,70 @@ use Illuminate\Http\Request;
 class TaskController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Display a listing of the tasks for the authenticated user.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $tasks = auth()->user()->tasks()
-            ->with('category')
-            ->latest()
-            ->paginate(8);
+        $query = Task::with('category')
+            ->where('user_id', auth()->id())
+            ->latest();
 
-        return view('tasks.index', compact('tasks'));
+        // Filter by category if requested
+        if ($request->filled('category_id')) {
+            $query->where('category_id', $request->category_id);
+        }
+
+        $tasks = $query->paginate(8);
+        $categories = Category::all();
+
+        return view('tasks.index', compact('tasks', 'categories'));
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Show the form for creating a new task.
      */
     public function create()
     {
-        //
+        $categories = Category::all();
+        return view('tasks.create', compact('categories'));
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Store a newly created task in storage.
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'title' => 'required|string|max:255',
+            'description' => 'nullable|string',
+            'status' => 'required|in:todo,in_progress,done',
+            'due_date' => 'nullable|date',
+            'category_id' => 'required|exists:categories,id',
+        ]);
+
+        $validated['user_id'] = auth()->id();
+
+        Task::create($validated);
+
+        return redirect()->route('tasks.index')->with('success', 'Task created successfully.');
     }
 
     /**
-     * Display the specified resource.
+     * Display the specified task.
      */
-    public function show(string $id)
+    public function show(Task $task)
     {
-        //
+        // Mandatory ownership check
+        if ($task->user_id !== auth()->id()) {
+            abort(403, 'Unauthorized action.');
+        }
+
+        $task->load(['category', 'user']);
+        return view('tasks.show', compact('task'));
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * Show the form for editing the specified task.
      */
     public function edit(Task $task)
     {
@@ -61,18 +87,40 @@ class TaskController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * Update the specified task in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Task $task)
     {
-        //
+        // Mandatory ownership check
+        if ($task->user_id !== auth()->id()) {
+            abort(403, 'Unauthorized action.');
+        }
+
+        $validated = $request->validate([
+            'title' => 'required|string|max:255',
+            'description' => 'nullable|string',
+            'status' => 'required|in:todo,in_progress,done',
+            'due_date' => 'nullable|date',
+            'category_id' => 'required|exists:categories,id',
+        ]);
+
+        $task->update($validated);
+
+        return redirect()->route('tasks.index')->with('success', 'Task updated successfully.');
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Remove the specified task from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Task $task)
     {
-        //
+        // Mandatory ownership check
+        if ($task->user_id !== auth()->id()) {
+            abort(403, 'Unauthorized action.');
+        }
+
+        $task->delete();
+
+        return redirect()->route('tasks.index')->with('success', 'Task deleted successfully.');
     }
 }

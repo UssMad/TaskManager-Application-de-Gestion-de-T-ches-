@@ -22,5 +22,11 @@ Route::middleware('auth')->group(function () {
     Route::resource('tasks', TaskController::class);
 });
 
+Route::get('/tscope/exception', function () {
+    throw new \RuntimeException('Telescope exception test — check the stack trace');
+});
+
+
+
 
 require __DIR__.'/auth.php';
