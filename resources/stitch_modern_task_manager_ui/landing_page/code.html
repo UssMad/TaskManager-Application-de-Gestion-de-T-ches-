@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>TaskFlow - Minimalist Task Management</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-family: 'Material Symbols Outlined';
+            font-weight: normal;
+            font-style: normal;
+            font-size: 24px;
+            line-height: 1;
+            letter-spacing: normal;
+            text-transform: none;
+            display: inline-block;
+            white-space: nowrap;
+            word-wrap: normal;
+            direction: ltr;
+            -webkit-font-feature-settings: 'liga';
+            -webkit-font-smoothing: antialiased;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container-lowest": "#ffffff",
+                        "primary": "#3525cd",
+                        "on-background": "#1b1b24",
+                        "on-secondary": "#ffffff",
+                        "tertiary-container": "#a44100",
+                        "surface-container-low": "#f5f2ff",
+                        "background": "#fcf8ff",
+                        "surface-container-high": "#eae6f4",
+                        "surface-container": "#f0ecf9",
+                        "primary-fixed": "#e2dfff",
+                        "on-tertiary": "#ffffff",
+                        "surface-tint": "#4d44e3",
+                        "outline": "#777587",
+                        "on-error-container": "#93000a",
+                        "tertiary-fixed-dim": "#ffb695",
+                        "on-secondary-container": "#00714d",
+                        "on-secondary-fixed-variant": "#005236",
+                        "on-secondary-fixed": "#002113",
+                        "inverse-surface": "#302f39",
+                        "error-container": "#ffdad6",
+                        "on-tertiary-fixed-variant": "#7b2f00",
+                        "on-primary-fixed-variant": "#3323cc",
+                        "on-primary-fixed": "#0f0069",
+                        "surface-variant": "#e4e1ee",
+                        "surface-bright": "#fcf8ff",
+                        "secondary": "#006c49",
+                        "primary-container": "#4f46e5",
+                        "secondary-fixed": "#6ffbbe",
+                        "outline-variant": "#c7c4d8",
+                        "on-error": "#ffffff",
+                        "surface-container-highest": "#e4e1ee",
+                        "inverse-on-surface": "#f3effc",
+                        "secondary-fixed-dim": "#4edea3",
+                        "tertiary": "#7e3000",
+                        "primary-fixed-dim": "#c3c0ff",
+                        "on-tertiary-fixed": "#351000",
+                        "on-primary-container": "#dad7ff",
+                        "inverse-primary": "#c3c0ff",
+                        "on-surface": "#1b1b24",
+                        "on-tertiary-container": "#ffd2be",
+                        "surface": "#fcf8ff",
+                        "on-primary": "#ffffff",
+                        "error": "#ba1a1a",
+                        "surface-dim": "#dcd8e5",
+                        "secondary-container": "#6cf8bb",
+                        "on-surface-variant": "#464555",
+                        "tertiary-fixed": "#ffdbcc"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "base": "4px",
+                        "lg": "24px",
+                        "xs": "4px",
+                        "gutter": "20px",
+                        "container-margin": "32px",
+                        "md": "16px",
+                        "xl": "40px",
+                        "sm": "8px"
+                    },
+                    "fontFamily": {
+                        "h1": ["Inter"],
+                        "body-base": ["Inter"],
+                        "label-md": ["Inter"],
+                        "h3": ["Inter"],
+                        "h2": ["Inter"],
+                        "button": ["Inter"],
+                        "body-sm": ["Inter"]
+                    },
+                    "fontSize": {
+                        "h1": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+                        "body-base": ["14px", { "lineHeight": "24px", "letterSpacing": "0", "fontWeight": "400" }],
+                        "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "500" }],
+                        "h3": ["18px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "h2": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.015em", "fontWeight": "600" }],
+                        "button": ["14px", { "lineHeight": "20px", "letterSpacing": "0", "fontWeight": "500" }],
+                        "body-sm": ["13px", { "lineHeight": "20px", "letterSpacing": "0", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-surface-container-lowest text-on-background font-body-base text-body-base min-h-screen flex flex-col">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 border-b border-gray-200 dark:border-gray-800 shadow-[0_1px_2px_rgba(0,0,0,0.05)] bg-white/80 dark:bg-gray-950/80 backdrop-blur-md font-['Inter'] antialiased text-sm font-medium">
+<div class="flex justify-between items-center h-14 px-6 max-w-[1440px] mx-auto w-full">
+<!-- Brand -->
+<div class="text-xl font-bold tracking-tight text-gray-900 dark:text-white flex-shrink-0">
+                TaskFlow
+            </div>
+<!-- Navigation Links (Centered/Left-aligned based on structure, adapting for desktop) -->
+<div class="hidden md:flex gap-x-8 items-center h-full">
+<a class="text-indigo-600 dark:text-indigo-400 border-b-2 border-indigo-600 dark:border-indigo-400 pb-1 h-full flex items-center hover:bg-gray-50 dark:hover:bg-gray-900/50 transition-colors active:scale-95 duration-200" href="#">
+                    Features
+                </a>
+<a class="text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 h-full flex items-center hover:bg-gray-50 dark:hover:bg-gray-900/50 transition-colors active:scale-95 duration-200 border-b-2 border-transparent pb-1" href="#">
+                    Pricing
+                </a>
+<a class="text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 h-full flex items-center hover:bg-gray-50 dark:hover:bg-gray-900/50 transition-colors active:scale-95 duration-200 border-b-2 border-transparent pb-1" href="#">
+                    Changelog
+                </a>
+</div>
+<!-- Actions -->
+<div class="flex items-center gap-x-4 flex-shrink-0">
+<button class="font-button text-button text-gray-500 hover:text-gray-900 active:scale-95 duration-200 transition-colors">
+                    Log In
+                </button>
+<button class="font-button text-button bg-primary text-on-primary px-4 py-2 rounded-lg hover:opacity-90 active:scale-95 duration-200 transition-all shadow-[0_4px_12px_rgba(0,0,0,0.03)] border-t border-white/20">
+                    Sign Up
+                </button>
+</div>
+</div>
+</nav>
+<!-- Main Content Canvas -->
+<main class="flex-grow pt-24 pb-20">
+<!-- Hero Section -->
+<section class="px-container-margin max-w-[1440px] mx-auto flex flex-col items-center text-center gap-lg mt-xl mb-24">
+<h1 class="font-h1 text-h1 text-on-background max-w-3xl leading-tight">
+                Master your workflow with effortless precision.
+            </h1>
+<p class="font-h3 text-h3 text-on-surface-variant max-w-2xl font-normal">
+                The minimalist task manager designed for speed, clarity, and uncompromising focus. Experience productivity without the cognitive overhead.
+            </p>
+<div class="flex gap-md mt-sm">
+<button class="font-button text-button bg-primary text-on-primary px-lg py-3 rounded-lg hover:opacity-90 transition-all shadow-[0_12px_24px_rgba(0,0,0,0.08)] border-t border-white/20 flex items-center gap-2">
+                    Get Started
+                    <span class="material-symbols-outlined" style="font-size: 18px;">arrow_forward</span>
+</button>
+<button class="font-button text-button bg-surface-container-lowest text-on-background border border-outline-variant px-lg py-3 rounded-lg hover:bg-surface-container-low transition-colors shadow-[0_4px_12px_rgba(0,0,0,0.03)] flex items-center gap-2">
+<span class="material-symbols-outlined" style="font-size: 18px;">play_circle</span>
+                    Watch Demo
+                </button>
+</div>
+<!-- Hero Abstract Visual (Bento Style) -->
+<div class="mt-xl w-full max-w-5xl grid grid-cols-1 md:grid-cols-12 gap-lg relative">
+<!-- Decorative blurred background layer -->
+<div class="absolute -inset-10 bg-primary/5 blur-3xl rounded-full z-0 pointer-events-none"></div>
+<!-- Main UI Mockup Card -->
+<div class="col-span-1 md:col-span-8 bg-surface-container-lowest rounded-xl border border-outline-variant shadow-[0_12px_24px_rgba(0,0,0,0.08)] overflow-hidden z-10 flex flex-col h-96">
+<div class="border-b border-outline-variant p-md flex items-center gap-4 bg-surface-container-low/50">
+<div class="flex gap-2">
+<div class="w-3 h-3 rounded-full bg-outline-variant"></div>
+<div class="w-3 h-3 rounded-full bg-outline-variant"></div>
+<div class="w-3 h-3 rounded-full bg-outline-variant"></div>
+</div>
+<div class="h-4 w-48 bg-surface-variant rounded flex-grow max-w-md mx-auto"></div>
+</div>
+<div class="p-lg flex-grow flex flex-col gap-sm bg-cover bg-center" data-alt="minimalist clean digital workspace dashboard showing task lists and calendar on a bright screen with soft lighting" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuALYzBvfMyvhlwk8O99KKnu35wgcGvbqupK0wc5X8mWFB8U17M8h3zhird06iSFOdqjmsFNAwwbpeOXRePtHpQHZifmg91FScW-jU_-m1Sa23maaac3nD0oQaiceGYT9naV6gsmrcnWsBT7Giziong6qBUnBSgdLSafzk4Yd_X-TmHX1TyQKPCZmvGzD4XZHu-cgABUNd_687vcn5ZY4gO_kCE-3jfO3DS4ovjnt2owosue8LF5VChK1FRReoUgSGcLQ7qOLgqY1nA');">
+<!-- Abstract task lines simulating UI over the image -->
+<div class="bg-surface-container-lowest/90 backdrop-blur-sm p-4 rounded-lg border border-outline-variant w-3/4 shadow-[0_4px_12px_rgba(0,0,0,0.03)] mt-auto mb-4 mx-auto flex items-center gap-4">
+<div class="w-5 h-5 rounded-full border border-primary/50 bg-primary/10"></div>
+<div class="h-3 w-full bg-on-background/20 rounded"></div>
+</div>
+</div>
+</div>
+<!-- Side Info Cards -->
+<div class="col-span-1 md:col-span-4 flex flex-col gap-lg z-10">
+<div class="bg-surface-container-low rounded-xl border border-outline-variant p-lg shadow-[0_4px_12px_rgba(0,0,0,0.03)] flex-grow flex flex-col justify-center">
+<div class="w-10 h-10 rounded-full bg-primary-container text-on-primary-container flex items-center justify-center mb-md">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">bolt</span>
+</div>
+<h3 class="font-h3 text-h3 text-on-background mb-1">Built for Velocity</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Keyboard shortcuts for every action. Move at the speed of thought.</p>
+</div>
+<div class="bg-surface-container rounded-xl border border-outline-variant p-lg shadow-[0_4px_12px_rgba(0,0,0,0.03)] flex-grow flex flex-col justify-center">
+<div class="flex justify-between items-center mb-md">
+<div class="flex -space-x-2">
+<div class="w-8 h-8 rounded-full bg-primary/20 border-2 border-surface-container-lowest"></div>
+<div class="w-8 h-8 rounded-full bg-primary/40 border-2 border-surface-container-lowest"></div>
+<div class="w-8 h-8 rounded-full bg-primary/60 border-2 border-surface-container-lowest"></div>
+</div>
+<span class="font-label-md text-label-md text-primary bg-primary/10 px-2 py-1 rounded-full">+12 Team</span>
+</div>
+<h3 class="font-h3 text-h3 text-on-background mb-1">Seamless Sync</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Real-time collaboration without the sync conflicts.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Features Section -->
+<section class="px-container-margin max-w-[1440px] mx-auto py-20 border-t border-outline-variant/30">
+<div class="mb-xl max-w-2xl">
+<span class="font-label-md text-label-md text-primary tracking-wider uppercase mb-2 block">Core Philosophy</span>
+<h2 class="font-h2 text-h2 text-on-background">Engineered for a clear mind.</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-lg">
+<!-- Feature 1: Simplicity -->
+<div class="group bg-surface-container-lowest rounded-xl p-lg border border-outline-variant shadow-[0_4px_12px_rgba(0,0,0,0.03)] hover:shadow-[0_12px_24px_rgba(0,0,0,0.08)] transition-shadow duration-300 flex flex-col">
+<div class="w-12 h-12 rounded-lg bg-surface-container flex items-center justify-center mb-lg group-hover:bg-primary/10 transition-colors">
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors" style="font-variation-settings: 'FILL' 0;">check_box_outline_blank</span>
+</div>
+<h3 class="font-h3 text-h3 text-on-background mb-sm">Radical Simplicity</h3>
+<p class="font-body-base text-body-base text-on-surface-variant flex-grow">
+                        We stripped away the noise. No complex settings or overwhelming dashboards. Just your tasks, presented clearly.
+                    </p>
+</div>
+<!-- Feature 2: Organization -->
+<div class="group bg-surface-container-lowest rounded-xl p-lg border border-outline-variant shadow-[0_4px_12px_rgba(0,0,0,0.03)] hover:shadow-[0_12px_24px_rgba(0,0,0,0.08)] transition-shadow duration-300 flex flex-col">
+<div class="w-12 h-12 rounded-lg bg-surface-container flex items-center justify-center mb-lg group-hover:bg-primary/10 transition-colors">
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors" style="font-variation-settings: 'FILL' 0;">account_tree</span>
+</div>
+<h3 class="font-h3 text-h3 text-on-background mb-sm">Fluid Organization</h3>
+<p class="font-body-base text-body-base text-on-surface-variant flex-grow">
+                        Group by project, tag by context, and filter instantly. Structure your workflow naturally, exactly how your brain works.
+                    </p>
+</div>
+<!-- Feature 3: Focus -->
+<div class="group bg-surface-container-lowest rounded-xl p-lg border border-outline-variant shadow-[0_4px_12px_rgba(0,0,0,0.03)] hover:shadow-[0_12px_24px_rgba(0,0,0,0.08)] transition-shadow duration-300 flex flex-col">
+<div class="w-12 h-12 rounded-lg bg-surface-container flex items-center justify-center mb-lg group-hover:bg-primary/10 transition-colors">
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors" style="font-variation-settings: 'FILL' 0;">center_focus_strong</span>
+</div>
+<h3 class="font-h3 text-h3 text-on-background mb-sm">Deep Work Focus</h3>
+<p class="font-body-base text-body-base text-on-surface-variant flex-grow">
+                        Enter dedicated focus modes. Single-task views and minimal visual cues prevent context switching and keep you in flow.
+                    </p>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full border-t border-gray-100 dark:border-gray-900 bg-white dark:bg-gray-950 font-['Inter']">
+<div class="flex flex-col md:flex-row justify-between items-center py-8 px-10 max-w-7xl mx-auto w-full gap-4">
+<div class="text-xs text-gray-500 dark:text-gray-400 opacity-80 hover:opacity-100 transition-opacity">
+                © 2024 TaskFlow Inc. Built for velocity.
+            </div>
+<div class="flex gap-x-6 items-center">
+<a class="text-xs text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 hover:underline opacity-80 hover:opacity-100 transition-all" href="#">
+                    Security
+                </a>
+<a class="text-xs text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 hover:underline opacity-80 hover:opacity-100 transition-all" href="#">
+                    Privacy
+                </a>
+<a class="text-xs text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 hover:underline opacity-80 hover:opacity-100 transition-all" href="#">
+                    Terms
+                </a>
+<a class="text-xs text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 hover:underline opacity-80 hover:opacity-100 transition-all" href="#">
+                    Status
+                </a>
+</div>
+</div>
+</footer>
+</body></html>

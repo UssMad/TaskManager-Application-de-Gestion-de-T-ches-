@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Register - TaskFlow</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container-lowest": "#ffffff",
+                        "primary": "#3525cd",
+                        "on-background": "#1b1b24",
+                        "on-secondary": "#ffffff",
+                        "tertiary-container": "#a44100",
+                        "surface-container-low": "#f5f2ff",
+                        "background": "#fcf8ff",
+                        "surface-container-high": "#eae6f4",
+                        "surface-container": "#f0ecf9",
+                        "primary-fixed": "#e2dfff",
+                        "on-tertiary": "#ffffff",
+                        "surface-tint": "#4d44e3",
+                        "outline": "#777587",
+                        "on-error-container": "#93000a",
+                        "tertiary-fixed-dim": "#ffb695",
+                        "on-secondary-container": "#00714d",
+                        "on-secondary-fixed-variant": "#005236",
+                        "on-secondary-fixed": "#002113",
+                        "inverse-surface": "#302f39",
+                        "error-container": "#ffdad6",
+                        "on-tertiary-fixed-variant": "#7b2f00",
+                        "on-primary-fixed-variant": "#3323cc",
+                        "on-primary-fixed": "#0f0069",
+                        "surface-variant": "#e4e1ee",
+                        "surface-bright": "#fcf8ff",
+                        "secondary": "#006c49",
+                        "primary-container": "#4f46e5",
+                        "secondary-fixed": "#6ffbbe",
+                        "outline-variant": "#c7c4d8",
+                        "on-error": "#ffffff",
+                        "surface-container-highest": "#e4e1ee",
+                        "inverse-on-surface": "#f3effc",
+                        "secondary-fixed-dim": "#4edea3",
+                        "tertiary": "#7e3000",
+                        "primary-fixed-dim": "#c3c0ff",
+                        "on-tertiary-fixed": "#351000",
+                        "on-primary-container": "#dad7ff",
+                        "inverse-primary": "#c3c0ff",
+                        "on-surface": "#1b1b24",
+                        "on-tertiary-container": "#ffd2be",
+                        "surface": "#fcf8ff",
+                        "on-primary": "#ffffff",
+                        "error": "#ba1a1a",
+                        "surface-dim": "#dcd8e5",
+                        "secondary-container": "#6cf8bb",
+                        "on-surface-variant": "#464555",
+                        "tertiary-fixed": "#ffdbcc"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "base": "4px",
+                        "lg": "24px",
+                        "xs": "4px",
+                        "gutter": "20px",
+                        "container-margin": "32px",
+                        "md": "16px",
+                        "xl": "40px",
+                        "sm": "8px"
+                    },
+                    "fontFamily": {
+                        "h1": ["Inter"],
+                        "body-base": ["Inter"],
+                        "label-md": ["Inter"],
+                        "h3": ["Inter"],
+                        "h2": ["Inter"],
+                        "button": ["Inter"],
+                        "body-sm": ["Inter"]
+                    },
+                    "fontSize": {
+                        "h1": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+                        "body-base": ["14px", { "lineHeight": "24px", "letterSpacing": "0", "fontWeight": "400" }],
+                        "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "500" }],
+                        "h3": ["18px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "h2": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.015em", "fontWeight": "600" }],
+                        "button": ["14px", { "lineHeight": "20px", "letterSpacing": "0", "fontWeight": "500" }],
+                        "body-sm": ["13px", { "lineHeight": "20px", "letterSpacing": "0", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="min-h-screen bg-background flex flex-col justify-center items-center p-md sm:p-lg antialiased">
+<!-- Main Registration Card -->
+<main class="w-full max-w-[440px] bg-surface-container-lowest rounded-lg border border-outline-variant shadow-[0_4px_12px_rgba(0,0,0,0.03)] p-container-margin overflow-hidden">
+<!-- Header / Branding -->
+<div class="flex flex-col items-center mb-container-margin">
+<div class="w-12 h-12 bg-primary-container rounded-lg flex items-center justify-center mb-md">
+<span class="material-symbols-outlined text-on-primary font-bold text-2xl" data-weight="fill" style="font-variation-settings: 'FILL' 1;">
+                    check_circle
+                </span>
+</div>
+<h1 class="font-h2 text-h2 text-on-background text-center mb-xs">Create an account</h1>
+<p class="font-body-base text-body-base text-on-surface-variant text-center">Join TaskFlow to manage your projects.</p>
+</div>
+<!-- Registration Form -->
+<form action="#" class="flex flex-col gap-md" method="POST">
+<!-- Name Field -->
+<div class="flex flex-col gap-xs">
+<label class="font-label-md text-label-md text-on-surface" for="name">Full Name</label>
+<input class="w-full bg-surface-container-lowest border border-outline-variant rounded font-body-base text-body-base text-on-background px-3 py-2 transition-all duration-200 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary-container/30 placeholder:text-outline-variant" id="name" name="name" placeholder="Jane Doe" required="" type="text"/>
+</div>
+<!-- Email Field -->
+<div class="flex flex-col gap-xs">
+<label class="font-label-md text-label-md text-on-surface" for="email">Work Email</label>
+<input class="w-full bg-surface-container-lowest border border-outline-variant rounded font-body-base text-body-base text-on-background px-3 py-2 transition-all duration-200 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary-container/30 placeholder:text-outline-variant" id="email" name="email" placeholder="jane@company.com" required="" type="email"/>
+</div>
+<!-- Password Field -->
+<div class="flex flex-col gap-xs">
+<label class="font-label-md text-label-md text-on-surface" for="password">Password</label>
+<input class="w-full bg-surface-container-lowest border border-outline-variant rounded font-body-base text-body-base text-on-background px-3 py-2 transition-all duration-200 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary-container/30 placeholder:text-outline-variant" id="password" name="password" placeholder="••••••••" required="" type="password"/>
+</div>
+<!-- Confirm Password Field -->
+<div class="flex flex-col gap-xs">
+<label class="font-label-md text-label-md text-on-surface" for="confirm_password">Confirm Password</label>
+<input class="w-full bg-surface-container-lowest border border-outline-variant rounded font-body-base text-body-base text-on-background px-3 py-2 transition-all duration-200 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary-container/30 placeholder:text-outline-variant" id="confirm_password" name="confirm_password" placeholder="••••••••" required="" type="password"/>
+</div>
+<!-- Submit Action -->
+<div class="pt-sm">
+<button class="w-full flex justify-center items-center py-[10px] px-4 bg-primary hover:bg-surface-tint text-on-primary font-button text-button rounded-lg transition-colors duration-200 shadow-sm border-t border-white/20" type="submit">
+                    Register
+                </button>
+</div>
+</form>
+<!-- Footer / Login Link -->
+<div class="mt-lg text-center">
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+                Already have an account? 
+                <a class="text-primary hover:text-surface-tint font-medium hover:underline transition-colors" href="#">Log in</a>
+</p>
+</div>
+</main>
+</body></html>

@@ -1,52 +1,76 @@
-<x-guest-layout>
-    <form method="POST" action="{{ route('register') }}">
+@extends('layouts.guest')
+
+@section('title', 'Create Account — TaskFlow')
+
+@section('content')
+    <div class="flex flex-col items-center mb-8">
+        <div class="w-12 h-12 bg-primary-container rounded-lg flex items-center justify-center mb-4">
+            <span class="material-symbols-outlined text-on-primary font-bold text-2xl" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+        </div>
+        <h1 class="text-on-background font-bold text-center mb-1" style="font-size:24px; line-height:32px; letter-spacing:-0.015em;">Create an account</h1>
+        <p class="text-on-surface-variant text-center" style="font-size:14px;">Join TaskFlow to manage your tasks.</p>
+    </div>
+
+    <form method="POST" action="{{ route('register') }}" class="flex flex-col gap-4">
         @csrf
 
         <!-- Name -->
-        <div>
-            <x-input-label for="name" :value="__('Name')" />
-            <x-text-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
-            <x-input-error :messages="$errors->get('name')" class="mt-2" />
+        <div class="flex flex-col gap-1.5">
+            <label for="name" class="font-medium text-on-surface" style="font-size:12px; letter-spacing:0.02em;">Full Name</label>
+            <input id="name" type="text" name="name" value="{{ old('name') }}" required autofocus autocomplete="name"
+                   placeholder="Jane Doe"
+                   class="w-full bg-surface-container-lowest border border-outline-variant rounded text-on-background px-3 py-2 text-sm transition-all duration-200 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/10 placeholder:text-outline @error('name') border-error @enderror">
+            @error('name')
+                <p class="text-error text-xs font-medium">{{ $message }}</p>
+            @enderror
         </div>
 
-        <!-- Email Address -->
-        <div class="mt-4">
-            <x-input-label for="email" :value="__('Email')" />
-            <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autocomplete="username" />
-            <x-input-error :messages="$errors->get('email')" class="mt-2" />
+        <!-- Email -->
+        <div class="flex flex-col gap-1.5">
+            <label for="email" class="font-medium text-on-surface" style="font-size:12px; letter-spacing:0.02em;">Work Email</label>
+            <input id="email" type="email" name="email" value="{{ old('email') }}" required autocomplete="username"
+                   placeholder="jane@company.com"
+                   class="w-full bg-surface-container-lowest border border-outline-variant rounded text-on-background px-3 py-2 text-sm transition-all duration-200 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/10 placeholder:text-outline @error('email') border-error @enderror">
+            @error('email')
+                <p class="text-error text-xs font-medium">{{ $message }}</p>
+            @enderror
         </div>
 
         <!-- Password -->
-        <div class="mt-4">
-            <x-input-label for="password" :value="__('Password')" />
-
-            <x-text-input id="password" class="block mt-1 w-full"
-                            type="password"
-                            name="password"
-                            required autocomplete="new-password" />
-
-            <x-input-error :messages="$errors->get('password')" class="mt-2" />
+        <div class="flex flex-col gap-1.5">
+            <label for="password" class="font-medium text-on-surface" style="font-size:12px; letter-spacing:0.02em;">Password</label>
+            <input id="password" type="password" name="password" required autocomplete="new-password"
+                   placeholder="••••••••"
+                   class="w-full bg-surface-container-lowest border border-outline-variant rounded text-on-background px-3 py-2 text-sm transition-all duration-200 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/10 placeholder:text-outline @error('password') border-error @enderror">
+            @error('password')
+                <p class="text-error text-xs font-medium">{{ $message }}</p>
+            @enderror
         </div>
 
         <!-- Confirm Password -->
-        <div class="mt-4">
-            <x-input-label for="password_confirmation" :value="__('Confirm Password')" />
-
-            <x-text-input id="password_confirmation" class="block mt-1 w-full"
-                            type="password"
-                            name="password_confirmation" required autocomplete="new-password" />
-
-            <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
+        <div class="flex flex-col gap-1.5">
+            <label for="password_confirmation" class="font-medium text-on-surface" style="font-size:12px; letter-spacing:0.02em;">Confirm Password</label>
+            <input id="password_confirmation" type="password" name="password_confirmation" required autocomplete="new-password"
+                   placeholder="••••••••"
+                   class="w-full bg-surface-container-lowest border border-outline-variant rounded text-on-background px-3 py-2 text-sm transition-all duration-200 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/10 placeholder:text-outline @error('password_confirmation') border-error @enderror">
+            @error('password_confirmation')
+                <p class="text-error text-xs font-medium">{{ $message }}</p>
+            @enderror
         </div>
 
-        <div class="flex items-center justify-end mt-4">
-            <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('login') }}">
-                {{ __('Already registered?') }}
-            </a>
-
-            <x-primary-button class="ms-4">
-                {{ __('Register') }}
-            </x-primary-button>
+        <!-- Submit -->
+        <div class="pt-2">
+            <button id="register-submit" type="submit"
+                    class="w-full flex justify-center items-center py-[10px] px-4 bg-primary hover:bg-surface-tint text-on-primary text-sm font-medium rounded-lg transition-colors duration-200 shadow-sm border-t border-white/20">
+                Register
+            </button>
         </div>
     </form>
-</x-guest-layout>
+
+    <div class="mt-6 text-center">
+        <p class="text-on-surface-variant" style="font-size:13px;">
+            Already have an account?
+            <a href="{{ route('login') }}" class="text-primary hover:text-surface-tint font-medium hover:underline transition-colors ml-1" style="font-size:13px;">Log in</a>
+        </p>
+    </div>
+@endsection

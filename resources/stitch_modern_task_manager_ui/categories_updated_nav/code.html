@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Categories - TaskFlow</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "surface-container-lowest": "#ffffff",
+                      "on-primary-container": "#dad7ff",
+                      "on-secondary": "#ffffff",
+                      "primary-fixed": "#e2dfff",
+                      "outline-variant": "#c7c4d8",
+                      "on-tertiary": "#ffffff",
+                      "tertiary-fixed": "#ffdbcc",
+                      "surface-bright": "#fcf8ff",
+                      "surface-tint": "#4d44e3",
+                      "inverse-surface": "#302f39",
+                      "error": "#ba1a1a",
+                      "on-primary-fixed": "#0f0069",
+                      "error-container": "#ffdad6",
+                      "surface-dim": "#dcd8e5",
+                      "secondary-fixed-dim": "#4edea3",
+                      "on-primary": "#ffffff",
+                      "on-tertiary-container": "#ffd2be",
+                      "surface-container-low": "#f5f2ff",
+                      "surface-container": "#f0ecf9",
+                      "surface-container-high": "#eae6f4",
+                      "on-error-container": "#93000a",
+                      "on-error": "#ffffff",
+                      "primary-fixed-dim": "#c3c0ff",
+                      "on-surface-variant": "#464555",
+                      "secondary": "#006c49",
+                      "primary-container": "#4f46e5",
+                      "on-secondary-fixed": "#002113",
+                      "on-secondary-fixed-variant": "#005236",
+                      "on-surface": "#1b1b24",
+                      "on-primary-fixed-variant": "#3323cc",
+                      "background": "#fcf8ff",
+                      "outline": "#777587",
+                      "inverse-on-surface": "#f3effc",
+                      "surface-container-highest": "#e4e1ee",
+                      "on-background": "#1b1b24",
+                      "surface": "#fcf8ff",
+                      "tertiary": "#7e3000",
+                      "on-tertiary-fixed": "#351000",
+                      "primary": "#3525cd",
+                      "tertiary-container": "#a44100",
+                      "on-secondary-container": "#00714d",
+                      "secondary-container": "#6cf8bb",
+                      "surface-variant": "#e4e1ee",
+                      "tertiary-fixed-dim": "#ffb695",
+                      "on-tertiary-fixed-variant": "#7b2f00",
+                      "inverse-primary": "#c3c0ff",
+                      "secondary-fixed": "#6ffbbe"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "sm": "8px",
+                      "xl": "40px",
+                      "xs": "4px",
+                      "md": "16px",
+                      "gutter": "20px",
+                      "lg": "24px",
+                      "base": "4px",
+                      "container-margin": "32px"
+              },
+              "fontFamily": {
+                      "h1": ["Inter"],
+                      "body-sm": ["Inter"],
+                      "h3": ["Inter"],
+                      "h2": ["Inter"],
+                      "button": ["Inter"],
+                      "label-md": ["Inter"],
+                      "body-base": ["Inter"]
+              },
+              "fontSize": {
+                      "h1": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+                      "body-sm": ["13px", { "lineHeight": "20px", "letterSpacing": "0", "fontWeight": "400" }],
+                      "h3": ["18px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                      "h2": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.015em", "fontWeight": "600" }],
+                      "button": ["14px", { "lineHeight": "20px", "letterSpacing": "0", "fontWeight": "500" }],
+                      "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "500" }],
+                      "body-base": ["14px", { "lineHeight": "24px", "letterSpacing": "0", "fontWeight": "400" }]
+              }
+            }
+          }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-base text-body-base min-h-screen flex antialiased">
+<!-- SideNavBar -->
+<nav class="w-[240px] h-screen border-r border-outline-variant bg-surface-container-low flex flex-col fixed left-0 top-0 py-6 px-4 z-50">
+<!-- Header -->
+<div class="flex items-center gap-3 px-3 mb-8">
+<div class="w-8 h-8 rounded-lg bg-primary text-on-primary flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-lg" data-weight="fill" style="font-variation-settings: 'FILL' 1;">task_alt</span>
+</div>
+<div>
+<h2 class="font-h3 text-h3 text-on-surface">TaskFlow</h2>
+<p class="font-label-md text-label-md text-on-surface-variant">Productivity Pro</p>
+</div>
+</div>
+<!-- Main Tabs -->
+<div class="flex flex-col gap-1 flex-1">
+<a class="flex items-center gap-3 px-3 py-2 rounded-md text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors duration-200 ease-in-out group" href="#">
+<span class="material-symbols-outlined text-xl group-hover:text-on-surface transition-colors" data-icon="dashboard">dashboard</span>
+<span class="font-body-sm text-body-sm">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-md text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors duration-200 ease-in-out group" href="#">
+<span class="material-symbols-outlined text-xl group-hover:text-on-surface transition-colors" data-icon="checklist">checklist</span>
+<span class="font-body-sm text-body-sm">Tasks</span>
+</a>
+<!-- Active Tab -->
+<a class="flex items-center gap-3 px-3 py-2 rounded-md text-primary font-semibold bg-primary-container/10 transition-colors duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined text-xl" data-icon="category" data-weight="fill" style="font-variation-settings: 'FILL' 1;">category</span>
+<span class="font-body-sm text-body-sm">Categories</span>
+</a>
+</div>
+<!-- Footer Tabs -->
+<div class="mt-auto pt-4 border-t border-outline-variant/50">
+<a class="flex items-center gap-3 px-3 py-2 rounded-md text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors duration-200 ease-in-out group" href="#">
+<span class="material-symbols-outlined text-xl group-hover:text-on-surface transition-colors" data-icon="logout">logout</span>
+<span class="font-body-sm text-body-sm">Logout</span>
+</a>
+</div>
+</nav>
+<!-- Main Content Area Wrapper -->
+<div class="flex-1 flex flex-col ml-[240px] min-w-0">
+<!-- TopNavBar -->
+<header class="h-16 w-full bg-surface-container-lowest/80 backdrop-blur-md shadow-sm flex items-center justify-between px-8 sticky top-0 z-40">
+<!-- Left: Search -->
+<div class="flex-1 max-w-md">
+<div class="relative flex items-center w-full h-10 rounded-md bg-surface-container-low border border-transparent focus-within:border-primary focus-within:ring-2 focus-within:ring-primary-fixed focus-within:bg-surface-container-lowest transition-all">
+<span class="material-symbols-outlined text-on-surface-variant ml-3 absolute pointer-events-none">search</span>
+<input class="w-full h-full pl-10 pr-4 bg-transparent border-none text-body-sm font-body-sm text-on-surface focus:outline-none focus:ring-0 placeholder-on-surface-variant" placeholder="Search..." type="text"/>
+</div>
+</div>
+<!-- Right: Actions & Profile -->
+<div class="flex items-center gap-2 ml-4">
+<button class="w-10 h-10 rounded-full flex items-center justify-center text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors duration-150">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<button class="w-10 h-10 rounded-full flex items-center justify-center text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors duration-150">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+</button>
+<div class="w-8 h-8 rounded-full bg-surface-variant border border-outline-variant overflow-hidden ml-2 flex items-center justify-center shrink-0">
+<img alt="User Avatar" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAIJA9Z8HSEnn-GNAq27729MwNQut9iTqt8zdw-PupOrBlw0BjFz-gSg93RIj0RGmmsuKcjf9-fcRM3vvy-DratZWQfI8e2hBnj335PjQV5toJPd84Ry5Conq2O6LRabe7JUMLoON9SI4ffYqo1tYaBbnr2iDfQfeX3XE4-Ib2AMf9JzIFM9mc5h6HC-r6LeU4qI8EbGL0fanaJ0GoHrcNXFizKxv3kigI_M6yupTHkQrcmMgHTscDXpghwZgRZah3HObZAsI6PnVg"/>
+</div>
+</div>
+</header>
+<!-- Page Canvas -->
+<main class="flex-1 w-full max-w-[1200px] mx-auto p-lg lg:p-container-margin">
+<!-- Page Header -->
+<div class="flex items-center justify-between mb-8">
+<div>
+<h1 class="font-h2 text-h2 text-on-surface mb-1">Categories</h1>
+<p class="font-body-base text-body-base text-on-surface-variant">Manage task groupings and organization tags.</p>
+</div>
+<button class="bg-primary text-on-primary font-button text-button px-4 py-2 rounded-lg shadow-[0_1px_2px_rgba(0,0,0,0.1)] border-t border-white/20 flex items-center gap-2 hover:bg-primary/90 transition-colors">
+<span class="material-symbols-outlined text-[20px]">add</span>
+                    New Category
+                </button>
+</div>
+<!-- Content Grid (Bento/Card Style instead of basic list) -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+<!-- Category Card: Work -->
+<div class="bg-surface-container-lowest rounded-lg border border-outline-variant shadow-[0_4px_12px_rgba(0,0,0,0.03)] p-5 hover:border-primary-fixed-dim transition-colors group relative overflow-hidden flex flex-col h-[160px]">
+<div class="absolute top-0 left-0 w-1 h-full bg-[#3b82f6]"></div>
+<div class="flex items-start justify-between mb-auto">
+<div class="w-10 h-10 rounded-lg bg-blue-50 text-blue-600 flex items-center justify-center">
+<span class="material-symbols-outlined">work</span>
+</div>
+<div class="flex gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="w-8 h-8 rounded flex items-center justify-center text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors">
+<span class="material-symbols-outlined text-[18px]">edit</span>
+</button>
+<button class="w-8 h-8 rounded flex items-center justify-center text-on-surface-variant hover:bg-error-container hover:text-error transition-colors">
+<span class="material-symbols-outlined text-[18px]">delete</span>
+</button>
+</div>
+</div>
+<div>
+<h3 class="font-h3 text-h3 text-on-surface mb-1">Work Projects</h3>
+<div class="flex items-center gap-2">
+<span class="inline-flex items-center px-2 py-0.5 rounded-full bg-surface-container-high text-on-surface-variant font-label-md text-label-md">
+                                24 Active Tasks
+                            </span>
+</div>
+</div>
+</div>
+<!-- Category Card: Personal -->
+<div class="bg-surface-container-lowest rounded-lg border border-outline-variant shadow-[0_4px_12px_rgba(0,0,0,0.03)] p-5 hover:border-primary-fixed-dim transition-colors group relative overflow-hidden flex flex-col h-[160px]">
+<div class="absolute top-0 left-0 w-1 h-full bg-[#10b981]"></div>
+<div class="flex items-start justify-between mb-auto">
+<div class="w-10 h-10 rounded-lg bg-emerald-50 text-emerald-600 flex items-center justify-center">
+<span class="material-symbols-outlined">person</span>
+</div>
+<div class="flex gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="w-8 h-8 rounded flex items-center justify-center text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors">
+<span class="material-symbols-outlined text-[18px]">edit</span>
+</button>
+<button class="w-8 h-8 rounded flex items-center justify-center text-on-surface-variant hover:bg-error-container hover:text-error transition-colors">
+<span class="material-symbols-outlined text-[18px]">delete</span>
+</button>
+</div>
+</div>
+<div>
+<h3 class="font-h3 text-h3 text-on-surface mb-1">Personal</h3>
+<div class="flex items-center gap-2">
+<span class="inline-flex items-center px-2 py-0.5 rounded-full bg-surface-container-high text-on-surface-variant font-label-md text-label-md">
+                                8 Active Tasks
+                            </span>
+</div>
+</div>
+</div>
+<!-- Category Card: Health & Fitness -->
+<div class="bg-surface-container-lowest rounded-lg border border-outline-variant shadow-[0_4px_12px_rgba(0,0,0,0.03)] p-5 hover:border-primary-fixed-dim transition-colors group relative overflow-hidden flex flex-col h-[160px]">
+<div class="absolute top-0 left-0 w-1 h-full bg-[#f43f5e]"></div>
+<div class="flex items-start justify-between mb-auto">
+<div class="w-10 h-10 rounded-lg bg-rose-50 text-rose-600 flex items-center justify-center">
+<span class="material-symbols-outlined">favorite</span>
+</div>
+<div class="flex gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="w-8 h-8 rounded flex items-center justify-center text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors">
+<span class="material-symbols-outlined text-[18px]">edit</span>
+</button>
+<button class="w-8 h-8 rounded flex items-center justify-center text-on-surface-variant hover:bg-error-container hover:text-error transition-colors">
+<span class="material-symbols-outlined text-[18px]">delete</span>
+</button>
+</div>
+</div>
+<div>
+<h3 class="font-h3 text-h3 text-on-surface mb-1">Health &amp; Fitness</h3>
+<div class="flex items-center gap-2">
+<span class="inline-flex items-center px-2 py-0.5 rounded-full bg-surface-container-high text-on-surface-variant font-label-md text-label-md">
+                                3 Active Tasks
+                            </span>
+</div>
+</div>
+</div>
+<!-- Category Card: Learning -->
+<div class="bg-surface-container-lowest rounded-lg border border-outline-variant shadow-[0_4px_12px_rgba(0,0,0,0.03)] p-5 hover:border-primary-fixed-dim transition-colors group relative overflow-hidden flex flex-col h-[160px]">
+<div class="absolute top-0 left-0 w-1 h-full bg-[#8b5cf6]"></div>
+<div class="flex items-start justify-between mb-auto">
+<div class="w-10 h-10 rounded-lg bg-violet-50 text-violet-600 flex items-center justify-center">
+<span class="material-symbols-outlined">menu_book</span>
+</div>
+<div class="flex gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="w-8 h-8 rounded flex items-center justify-center text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors">
+<span class="material-symbols-outlined text-[18px]">edit</span>
+</button>
+<button class="w-8 h-8 rounded flex items-center justify-center text-on-surface-variant hover:bg-error-container hover:text-error transition-colors">
+<span class="material-symbols-outlined text-[18px]">delete</span>
+</button>
+</div>
+</div>
+<div>
+<h3 class="font-h3 text-h3 text-on-surface mb-1">Learning</h3>
+<div class="flex items-center gap-2">
+<span class="inline-flex items-center px-2 py-0.5 rounded-full bg-surface-container-high text-on-surface-variant font-label-md text-label-md">
+                                12 Active Tasks
+                            </span>
+</div>
+</div>
+</div>
+<!-- Category Card: Errands -->
+<div class="bg-surface-container-lowest rounded-lg border border-outline-variant shadow-[0_4px_12px_rgba(0,0,0,0.03)] p-5 hover:border-primary-fixed-dim transition-colors group relative overflow-hidden flex flex-col h-[160px]">
+<div class="absolute top-0 left-0 w-1 h-full bg-[#f59e0b]"></div>
+<div class="flex items-start justify-between mb-auto">
+<div class="w-10 h-10 rounded-lg bg-amber-50 text-amber-600 flex items-center justify-center">
+<span class="material-symbols-outlined">local_shipping</span>
+</div>
+<div class="flex gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="w-8 h-8 rounded flex items-center justify-center text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors">
+<span class="material-symbols-outlined text-[18px]">edit</span>
+</button>
+<button class="w-8 h-8 rounded flex items-center justify-center text-on-surface-variant hover:bg-error-container hover:text-error transition-colors">
+<span class="material-symbols-outlined text-[18px]">delete</span>
+</button>
+</div>
+</div>
+<div>
+<h3 class="font-h3 text-h3 text-on-surface mb-1">Errands</h3>
+<div class="flex items-center gap-2">
+<span class="inline-flex items-center px-2 py-0.5 rounded-full bg-surface-container-high text-on-surface-variant font-label-md text-label-md">
+                                5 Active Tasks
+                            </span>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+</body></html>

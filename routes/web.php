@@ -9,7 +9,18 @@ Route::get('/', function () {
 });
 
 Route::get('/dashboard', function () {
-    return view('dashboard');
+    $taskCounts = [
+        'total'       => \App\Models\Task::where('user_id', auth()->id())->count(),
+        'todo'        => \App\Models\Task::where('user_id', auth()->id())->where('status', 'todo')->count(),
+        'in_progress' => \App\Models\Task::where('user_id', auth()->id())->where('status', 'in_progress')->count(),
+        'done'        => \App\Models\Task::where('user_id', auth()->id())->where('status', 'done')->count(),
+        'overdue'     => \App\Models\Task::where('user_id', auth()->id())
+                            ->where('status', '!=', 'done')
+                            ->whereNotNull('due_date')
+                            ->where('due_date', '<', now()->toDateString())
+                            ->count(),
+    ];
+    return view('dashboard', compact('taskCounts'));
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
@@ -20,13 +31,7 @@ Route::middleware('auth')->group(function () {
 
 Route::middleware('auth')->group(function () {
     Route::resource('tasks', TaskController::class);
+    Route::patch('tasks/{task}/status', [TaskController::class, 'updateStatus'])->name('tasks.updateStatus');
 });
-
-Route::get('/tscope/exception', function () {
-    throw new \RuntimeException('Telescope exception test — check the stack trace');
-});
-
-
-
 
 require __DIR__.'/auth.php';

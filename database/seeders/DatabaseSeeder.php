@@ -17,27 +17,18 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
+        User::firstOrCreate(
+            ['email' => 'user@user.com'],
+            [
+                'name' => 'user',
+                'password'=> bcrypt('admin123'),
+            ]
+        );
 
-
-        User::factory()->create([
-            'name' => 'user',
-            'email' => 'user@user.com',
-            'password'=> bcrypt('admin123'),
-        ]);
-
-        Category::factory()->create([
-            'name' => 'Travail',
-        ]);
-
-        Category::factory()->create([
-            'name' => 'Personnel',
-        ]);
-
-        Category::factory()->create([
-            'name' => 'Loisirs',
-        ]);
+        Category::firstOrCreate(['name' => 'Travail']);
+        Category::firstOrCreate(['name' => 'Personnel']);
+        Category::firstOrCreate(['name' => 'Loisirs']);
 
         Task::factory(20)->create();
-
     }
 }
