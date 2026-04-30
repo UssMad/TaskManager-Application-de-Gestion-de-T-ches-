@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', 'New Task — TaskFlow')
+@section('title', 'New Task — iTask')
 @section('content')
 
 <div class="max-w-2xl mx-auto">

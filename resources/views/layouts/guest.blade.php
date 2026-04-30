@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>@yield('title', 'TaskFlow')</title>
+    <title>@yield('title', 'iTask')</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -64,7 +64,7 @@
     <div class="flex justify-center mb-8">
         <div class="flex items-center gap-2 text-on-surface">
             <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1; font-size: 28px; color: #3525cd;">check_circle</span>
-            <span class="text-h3 font-h3 tracking-tight font-bold" style="font-size:20px; font-weight:700;">TaskFlow</span>
+            <span class="text-h3 font-h3 tracking-tight font-bold" style="font-size:20px; font-weight:700;">iTask</span>
         </div>
     </div>
 
@@ -73,7 +73,7 @@
         @yield('content')
     </main>
 
-    <p class="mt-8 text-xs text-outline">&copy; {{ date('Y') }} TaskFlow &mdash; Built for velocity.</p>
+    <p class="mt-8 text-xs text-outline">&copy; {{ date('Y') }} iTask &mdash; Built for velocity.</p>
 
 </body>
 </html>

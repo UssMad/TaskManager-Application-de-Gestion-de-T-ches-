@@ -1,6 +1,6 @@
 @extends('layouts.guest')
 
-@section('title', 'Sign In — TaskFlow')
+@section('title', 'Sign In — iTask')
 
 @section('content')
     <div class="mb-8 text-center">

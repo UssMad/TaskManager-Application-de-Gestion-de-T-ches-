@@ -1,6 +1,6 @@
 @extends('layouts.guest')
 
-@section('title', 'Create Account — TaskFlow')
+@section('title', 'Create Account — iTask')
 
 @section('content')
     <div class="flex flex-col items-center mb-8">
@@ -8,7 +8,7 @@
             <span class="material-symbols-outlined text-on-primary font-bold text-2xl" style="font-variation-settings: 'FILL' 1;">check_circle</span>
         </div>
         <h1 class="text-on-background font-bold text-center mb-1" style="font-size:24px; line-height:32px; letter-spacing:-0.015em;">Create an account</h1>
-        <p class="text-on-surface-variant text-center" style="font-size:14px;">Join TaskFlow to manage your tasks.</p>
+        <p class="text-on-surface-variant text-center" style="font-size:14px;">Join iTask to manage your tasks.</p>
     </div>
 
     <form method="POST" action="{{ route('register') }}" class="flex flex-col gap-4">

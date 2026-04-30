@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', 'My Tasks — TaskFlow')
+@section('title', 'My Tasks — iTask')
 @section('content')
 
 <div class="flex items-center justify-between mb-8">

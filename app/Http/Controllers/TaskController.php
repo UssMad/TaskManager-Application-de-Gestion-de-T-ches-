@@ -9,21 +9,18 @@ use Illuminate\Http\Request;
 
 class TaskController extends Controller
 {
-    /**
-     * Display a listing of the tasks for the authenticated user.
-     */
+
     public function index(Request $request)
     {
         $query = Task::with('category')
             ->where('user_id', auth()->id())
             ->latest();
 
-        // Filter by status if requested
+
         if ($request->filled('status')) {
             $query->where('status', $request->status);
         }
 
-        // Filter by category if requested
         if ($request->filled('category_id')) {
             $query->where('category_id', $request->category_id);
         }
@@ -31,7 +28,7 @@ class TaskController extends Controller
         $tasks = $query->paginate(8);
         $categories = Category::all();
 
-        // Task counts by status for the welcome banner
+            // Task counts by status for the welcome banner
         $taskCounts = [
             'total'       => Task::where('user_id', auth()->id())->count(),
             'todo'        => Task::where('user_id', auth()->id())->where('status', 'todo')->count(),

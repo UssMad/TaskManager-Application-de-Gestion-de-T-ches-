@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', $task->title . ' — TaskFlow')
+@section('title', $task->title . ' — iTask')
 @section('content')
 
 @php $isOverdue = $task->due_date && $task->status !== 'done' && \Carbon\Carbon::parse($task->due_date)->isPast(); @endphp

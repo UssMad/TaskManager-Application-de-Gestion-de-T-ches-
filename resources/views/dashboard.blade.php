@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Dashboard — TaskFlow')
+@section('title', 'Dashboard — iTask')
 
 @section('content')
 

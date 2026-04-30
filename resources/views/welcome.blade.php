@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TaskFlow — Minimalist Task Management</title>
+    <title>iTask — Minimalist Task Management</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -38,7 +38,7 @@
     <div class="flex justify-between items-center h-14 px-6 max-w-[1440px] mx-auto w-full">
         <div class="flex items-center gap-2">
             <span class="material-symbols-outlined text-primary" style="font-variation-settings:'FILL' 1;font-size:22px;">check_circle</span>
-            <span class="text-lg font-bold tracking-tight text-gray-900">TaskFlow</span>
+            <span class="text-lg font-bold tracking-tight text-gray-900">iTask</span>
         </div>
         <div class="flex items-center gap-3">
             @auth
@@ -143,7 +143,7 @@
 {{-- Footer --}}
 <footer class="w-full border-t border-gray-100 bg-white">
     <div class="flex flex-col md:flex-row justify-between items-center py-6 px-8 max-w-7xl mx-auto gap-4">
-        <p class="text-xs text-gray-400">&copy; {{ date('Y') }} TaskFlow &mdash; Built for velocity.</p>
+        <p class="text-xs text-gray-400">&copy; {{ date('Y') }} iTask &mdash; Built for velocity.</p>
         <div class="flex gap-6">
             <a href="{{ route('login') }}" class="text-xs text-gray-400 hover:text-gray-700 transition-colors">Sign In</a>
             <a href="{{ route('register') }}" class="text-xs text-gray-400 hover:text-gray-700 transition-colors">Sign Up</a>

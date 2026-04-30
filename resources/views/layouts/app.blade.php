@@ -4,9 +4,9 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <meta name="description" content="TaskFlow — Minimalist task management for productive teams.">
+    <meta name="description" content="iTask — Minimalist task management for productive teams.">
 
-    <title>@yield('title', 'TaskFlow')</title>
+    <title>@yield('title', 'iTask')</title>
 
     <!-- Google Fonts: Inter -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -127,7 +127,7 @@
             <span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 1; font-size:18px;">task_alt</span>
         </div>
         <div>
-            <h2 class="text-[15px] font-bold text-gray-900 leading-tight">TaskFlow</h2>
+            <h2 class="text-[15px] font-bold text-gray-900 leading-tight">iTask</h2>
             <p class="text-gray-500 text-xs">{{ Auth::user()->name }}</p>
         </div>
     </div>
